@@ -1,26 +1,45 @@
-# 🧠 Catálogo de Inteligências Artificiais  
-Projeto criado durante a **Imersão Alura + Google – 2025**
+🧠 Catálogo de Inteligências Artificiais
+Projeto criado durante a Imersão Alura + Google – 2025.
 
-Este repositório reúne informações de diversas Inteligências Artificiais, incluindo:
+✨ Visão Geral
+Este repositório serve como uma base de dados e uma ferramenta de pesquisa para os principais modelos de Inteligência Artificial (IA) disponíveis no mercado. O projeto cataloga informações essenciais sobre cada modelo para facilitar a comparação e o estudo rápido.
 
-- Nome  
-- Descrição  
-- Data de criação  
-- Link oficial para documentação  
+Para cada IA, você encontrará:
 
-## 🎯 Objetivo  
-Fornecer uma ferramenta simples e educativa que permita pesquisar e comparar diferentes modelos de IA.
+Nome: O nome oficial do modelo (ex: Gemini, GPT-4, LLaMA 3).
 
-## 🚀 Tecnologias utilizadas  
-- HTML / CSS / JavaScript (ou substitua pelo que você usou)  
-- Google Gemini  
-- Dados oficiais de cada modelo de IA  
+Descrição: Um resumo conciso das capacidades e do foco principal do modelo.
 
-## 📚 Exemplos de IAs catalogadas  
-- Google Gemini  
-- OpenAI GPT  
-- Anthropic Claude  
-- Meta LLaMA  
-- Mistral AI  
+Data de Lançamento: A data de criação ou do lançamento público da versão mais relevante/recente.
 
-Sinta-se livre para contribuir!
+Link Oficial: O link direto para a documentação, blog de anúncio ou página oficial do modelo.
+
+Modelo de Negócio (Opcional): Se é Open Source, Open Weight ou Proprietário.
+
+🎯 Objetivo
+Fornecer uma ferramenta simples, educativa e de fácil consulta que permita a qualquer pessoa ou desenvolvedor pesquisar e comparar as características e o histórico de diferentes Modelos de Linguagem Grande (LLMs) e outras IAs generativas.
+
+🚀 Tecnologias Utilizadas
+O projeto foi construído utilizando as seguintes tecnologias:
+
+HTML / CSS / JavaScript: Para a interface do usuário (Front-end) e a lógica de exibição/filtragem dos dados. (Altere isso se usou frameworks como React/Vue ou ferramentas diferentes).
+
+Google Gemini API: Utilizado para funcionalidades de pesquisa avançada ou para gerar descrições/resumos de IAs recém-adicionadas (se aplicável).
+
+JSON/Dados Oficiais: A fonte dos dados catalogados, garantindo precisão nas informações.
+
+📚 IAs Catalogadas (Exemplos)
+Alguns dos modelos que você pode encontrar no catálogo incluem:
+
+Google Gemini: Focado em multimodalidade e integração com o ecossistema Google.
+
+OpenAI GPT: Pioneiro e amplamente utilizado, conhecido por sua versatilidade.
+
+Anthropic Claude: Desenvolvido com foco em segurança (Constitutional AI).
+
+Meta LLaMA: Modelo de código aberto (Open Weight) focado em performance.
+
+Mistral AI: Modelos Open Source leves e de alto desempenho.
+
+🤝 Contribuição
+Sinta-se à vontade para contribuir com a comunidade! Adicionar novos modelos ou corrigir informações existentes é muito bem-vindo.
