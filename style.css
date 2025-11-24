@@ -12,6 +12,13 @@
     --search-bg: #34495e;
     --search-border: #7f8c8d;
     --search-placeholder: #bdc3c7;
+    /* Novas variáveis para os botões de categoria */
+    --category-btn-bg: #34495e;
+    --category-btn-text: white;
+    --category-btn-border: #7f8c8d;
+    --category-btn-hover-bg: #4e6a85;
+    --category-btn-active-bg: #3498db;
+    --category-btn-active-text: white;
 }
 
 /* Estilos Gerais */
@@ -165,6 +172,39 @@ main {
     --search-border: #718096;
     --search-placeholder: #a0aec0;
 }
+/* Tema Escuro - Variáveis de Categoria */
+.dark-theme {
+    --category-btn-bg: #4a5568;
+    --category-btn-text: #e2e8f0;
+    --category-btn-border: #718096;
+    --category-btn-hover-bg: #5a6a82;
+    --category-btn-active-bg: #63b3ed;
+    --category-btn-active-text: #1a202c;
+}
+
+/* Estilos para o contêiner de categorias */
+.category-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px; /* Espaçamento entre os botões */
+    margin: 0 20px; /* Espaçamento das laterais */
+}
+
+/* Estilos para os botões de categoria */
+.category-btn {
+    background-color: var(--category-btn-bg);
+    color: var(--category-btn-text);
+    border: 1px solid var(--category-btn-border);
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    white-space: nowrap; /* Evita que o texto do botão quebre */
+    font-weight: 500;
+}
 
 .hidden {
     display: none !important;
@@ -203,4 +243,25 @@ footer {
 
 .hidden {
     display: none !important;
+}
+
+/* Estilo do botão de categoria ao passar o mouse */
+.category-btn:hover {
+    background-color: var(--category-btn-hover-bg);
+}
+
+/* Estilo para o botão de categoria ativo (selecionado) */
+.category-btn.active {
+    background-color: var(--category-btn-active-bg);
+    color: var(--category-btn-active-text);
+    border-color: var(--category-btn-active-bg);
+}
+
+/* Ajustes para o cabeçalho em telas menores */
+@media (max-width: 992px) {
+    header {
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+    }
 }

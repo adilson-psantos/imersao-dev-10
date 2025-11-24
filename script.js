@@ -1,11 +1,12 @@
 const cardContainer = document.querySelector(".card-container");
 const inputBusca = document.querySelector("#input-busca");
-const btnBusca = document.querySelector("#btn-busca");
 const btnLimpaBusca = document.querySelector("#btn-limpa-busca");
 const themeToggleBtn = document.querySelector("#theme-toggle");
 const themeIconSun = document.querySelector(".icon-sun");
 const themeIconMoon = document.querySelector(".icon-moon");
+const categoryContainer = document.querySelector("#category-container");
 const body = document.body;
+
 let timeoutId = null;
 let dados = [];
 
@@ -15,15 +16,25 @@ async function carregarDados() {
         const resposta = await fetch("data.json");
         dados = await resposta.json();
         renderizarCards(dados);
+        renderizarCategorias();
     } catch (error) {
         console.error("Erro ao carregar os dados:", error);
     }
 }
 
-// Função que filtra os dados com base no termo de busca
-function filtrarDados() {
+// Função que filtra os dados com base no termo de busca e na categoria ativa
+function filtrarDados(categoriaSelecionada = null) {
     const termoBusca = inputBusca.value.toLowerCase();
-    const dadosFiltrados = dados.filter(card => {
+    let dadosFiltrados = dados;
+
+    // 1. Filtra por categoria, se houver uma selecionada
+    const categoriaAtiva = categoriaSelecionada || document.querySelector('.category-btn.active')?.dataset.category;
+    if (categoriaAtiva) {
+        dadosFiltrados = dados.filter(card => card.tags.includes(categoriaAtiva));
+    }
+
+    // 2. Filtra pelo termo de busca sobre o resultado da categoria
+    dadosFiltrados = dadosFiltrados.filter(card => {
         const nomeMatch = card.nome.toLowerCase().includes(termoBusca);
         const tagMatch = card.tags.some(tag => tag.toLowerCase().includes(termoBusca));
         return nomeMatch || tagMatch;
@@ -57,7 +68,7 @@ inputBusca.addEventListener("keydown", (event) => {
 btnLimpaBusca.addEventListener("click", () => {
     inputBusca.value = "";
     btnLimpaBusca.classList.add("hidden");
-    renderizarCards(dados); // Mostra todos os cards novamente
+    filtrarDados(); // Re-filtra com base na categoria ativa (ou nenhuma)
 });
 
 // --- Lógica para alternar o tema ---
@@ -86,6 +97,41 @@ themeToggleBtn.addEventListener('click', () => {
 // Verifica o tema salvo no carregamento da página
 const temaSalvo = localStorage.getItem('theme') || 'light'; // Padrão para 'light' se nada for salvo
 aplicarTema(temaSalvo);
+
+// --- Lógica das Categorias ---
+
+function renderizarCategorias() {
+    // Define um conjunto de categorias principais para evitar poluir a UI
+    const categoriasPrincipais = new Set(["llm", "ia generativa", "visão computacional", "framework", "conceito", "ferramenta", "nlp"]);
+    const todasAsTags = new Set();
+    dados.forEach(card => {
+        card.tags.forEach(tag => {
+            if (categoriasPrincipais.has(tag)) {
+                todasAsTags.add(tag);
+            }
+        });
+    });
+
+    categoryContainer.innerHTML = `<button class="category-btn active" data-category="">Ver Todos</button>`; // Botão para mostrar tudo
+
+    const categoriasOrdenadas = [...todasAsTags].sort();
+
+    categoriasOrdenadas.forEach(categoria => {
+        const btnCategoria = document.createElement('button');
+        btnCategoria.className = 'category-btn';
+        btnCategoria.textContent = categoria.charAt(0).toUpperCase() + categoria.slice(1); // Capitaliza a primeira letra
+        btnCategoria.dataset.category = categoria;
+        categoryContainer.appendChild(btnCategoria);
+    });
+
+    categoryContainer.addEventListener('click', (e) => {
+        if (e.target.tagName === 'BUTTON') {
+            document.querySelector('.category-btn.active')?.classList.remove('active');
+            e.target.classList.add('active');
+            filtrarDados(e.target.dataset.category);
+        }
+    });
+}
 
 function renderizarCards(cards) {
     cardContainer.innerHTML = ""; // Limpa o container antes de adicionar novos cards
