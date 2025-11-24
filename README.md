@@ -48,7 +48,7 @@ Clone o Repositório:
 
 Bash
 
-git clone [LINK DO SEU REPOSITÓRIO]
+gh repo clone adilson-psantos/imersao-dev-10
 Navegue até a Pasta:
 
 Bash
